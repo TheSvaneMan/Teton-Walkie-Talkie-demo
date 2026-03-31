@@ -2,16 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+    /* M3 Baseline Colors */
+    --md-sys-color-primary: #6750a4;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-surface: #fef7ff;
+    --md-sys-color-on-surface: #1d1b20;
+    --md-sys-color-surface-container-high: #ece6f0;
+    --md-sys-color-surface-container: #f3edf7;
+    --md-sys-color-outline: #79747e;
+    --md-sys-color-outline-variant: #cac4d0;
+
+    font-family: "Roboto", system-ui, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    margin: 0;
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+}
+
+/* --- THE ICON FIX --- */
+md-icon {
+    /* This tells the component to use the font we linked in index.html */
+    font-family: "Material Symbols Outlined" !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    /* This is the magic line that turns the word 'person' into the icon */
+    font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Fix for Material Web text field labels */
+md-outlined-text-field {
+    --md-outlined-text-field-label-text-font: "Roboto";
+}
+
+.bg-surface {
+    background-color: var(--md-sys-color-surface);
 }
