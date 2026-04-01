@@ -1,59 +1,68 @@
-# Teton-Walkie-Talkie
-A 5 hour implementation prototype for a walkie-talkie. Includes both a frontend, backend and database.
+Teton-Walkie-Talkie (Modernized Prototype)
+⚠️ DEPRECATION NOTICE: April 1, 2026
+This project is officially deprecated and is now in a "Sunset" state. What this means:
+
+No Active Maintenance: No further bug fixes, security patches, or feature updates will be provided.
+
+Legacy Status: The code is provided "as-is" for portfolio and educational reference.
+
+Compatibility Risk: As browser security standards for WebRTC and the Bun runtime evolve, this prototype may cease to function without manual intervention.
+
+🌅 Project Sunset Summary
+This project was a time-boxed exploration into WebRTC, Socket.io, and modern frontend tooling. What began as a 5-hour sprint was eventually evolved into a functioning Peer-to-Peer (P2P) Secure Video & Audio Walkie-Talkie.
+
 What is Teton-Walkie-Talkie?
-```
-A brief attempt at making a walkie-talkie web application.
-```
-// ----------------- How to run the project ----------------- //
-- The projec consists of 2 main projects
--  client & server
-1. For each, open a terminal and navigate to 'client' folder. Type npm install 
-```
-npm install
-```
-2. Do the same for the 'server' folder.
-3. The app should serve on localhost:3000
+A secure, browser-based walkie-talkie for hospital ward communication. It leverages WebRTC for low-latency media streaming and Socket.io for signaling.
 
-P.S. I have included the .env file to allow your team to connect to the database but I will make it inactive in a while, unless specified otherwise.
+🚀 Final Architecture & Stack
+Runtime: Bun (High-performance JS toolkit)
 
+Signaling Server: Node.js / Express with Socket.io v4
 
-// ----------------- Architecture choices ----------------- //
----
-- Initial user flow, data flow and system architecture
-![screenshot](https://github.com/TheSvaneMan/Teton-Walkie-Talkie/assets/43392291/065d328f-1026-42ce-b294-b6270bf36983)
+P2P Protocol: WebRTC (via adapter-latest.js)
 
-- Screenshot of live database on harperDB
-![screenshot2](https://github.com/TheSvaneMan/Teton-Walkie-Talkie/assets/43392291/549b910b-57a9-4b1b-b025-72bdc3795a2e)
+Styling: Tailwind CSS + Material Web Components (Google)
 
+Security: Mandatory HTTPS/Localhost enforcement for getUserMedia()
 
-// ----------------- Architecture description ----------------- //
-- I chose to use a simple new react app, as it houses multiple useful functions for prototyping and hacking a project together.
-- Expressjs is not the fastest backend server but it accessible, readible and serves the purpose for routing, data parsing and serving.
-- I have not used HarperDB before, and my initial choice would have been MongoDB for storing the messages.
+🛠️ How to run (Legacy Instructions)
+Prerequisites: Ensure Bun is installed.
 
-// ----------------- Workflow ----------------- //
-- Opened Miro and diagramed the user flow and data flow
-- Googled for existing codebases (Specifically for Audio Streaming / voice chats)
-- Found socket io client API 
+Install Dependencies:
 
-- https://socket.io/docs/v4/client-api/
-- I made a choice to make an MVP chat app which can later have the live audio communication stream added. 
+Bash
+bun install
+Build CSS:
 
-- Concluded MVP should be a chat based app that can have a call feature added later.
-- Basic flow includes a user defining their username, and selecting a room to join.
+Bash
+bun run build
+Start the Server:
 
--  I followed a tutorial:  https://www.freecodecamp.org/news/build-a-realtime-chat-app-with-react-express-socketio-and-harperdb/
+Bash
+bun run start
+Access: Open http://localhost:8080. Note: Remote devices require an HTTPS tunnel (like ngrok) to access camera/mic permissions.
 
-- I then found https://codelabs.developers.google.com/codelabs/webrtc-web/#0 and looked through the documentation and attempted to build a service to stream audio, I did not succeed and chose not to continue based on time limitations.
+📈 Evolution & Reflections
+Phase 1: The 5-Hour Sprint (Initial Attempt)
+Goal: MVP Chat app with HarperDB.
 
-// ----------------- Alternatives and reflections ----------------- //
-- I should have realized from the beginning the task was out of scope to program in 5 hours for my current skillset, in relations to being a complete deployable web-application.
-- I should have focused on the user interface and designing mockups, but I prefer to work in proof-of-concept workflows and note the blocks/painpoints in the process, which can then be evaluated later and further researched for the next design and prototype. Iterative development workflow.
-- I wanted to upload and deploy the application live, but I pushed myself to get the WebRTC to function but did not manage.
+Challenge: Realized WebRTC scope was larger than the 5-hour window allowed for a solo dev.
 
-// ----------------- Additional notes ----------------- //
+Original Architecture: React frontend, Express backend, HarperDB.
 
-"Encryption is mandatory for all WebRTC components, and its JavaScript APIs can only be used from secure origins (HTTPS or localhost). Signaling mechanisms aren't defined by WebRTC standards, so it's up to you make sure to use secure protocols."
+Phase 2: Modernization (Final State)
+WebRTC Success: Successfully implemented RTCPeerConnection for 1-to-1 secure video/audio calls.
 
-- I hope the project suffices to show my skills, approach to problems and my ability to complete a task and determine the state of the task in detail.
+Performance: Migrated to Bun for faster builds and a streamlined developer workflow.
 
+UX Overhaul: Rebuilt the UI with Material Design 3 and a responsive "Ward" selection system.
+
+🏗️ Technical Logic
+Signaling: Server-side logic limits rooms to 2 users to ensure stable P2P performance.
+
+Dynamic Routing: Utilizes URL parameters (?room=WardName) for direct channel access.
+
+Cleanup: Implemented automatic media track disposal to prevent "ghost" camera usage after disconnects.
+
+📝 Final Notes
+"I prefer to work in proof-of-concept workflows and note the blocks/painpoints in the process, which can then be evaluated later for further research. This project reflects that iterative development cycle."
